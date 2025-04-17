@@ -1,62 +1,70 @@
-# 📚 Library Management System
+# 📚 Online Library Management System
 
-A fully functional Library Management System with distinct access for **Admin** and **User**. It supports book management, memberships, transactions, and reporting with robust validation and user-friendly design.
-
----
-
-## 🚀 Modules Overview
-
-### 1. Maintenance Module *(Admin Only)*
-
-- **Add/Update Book**
-  - Type: Book/Movie (default: Book)
-  - All fields mandatory
-  - Shows errors on the same page
-
-- **Add/Update Membership**
-  - Duration: 6 months / 1 year / 2 years (default: 6 months)
-  - All fields mandatory
-
-- **User Management**
-  - User Type: New / Existing (default: New)
-  - Name: Mandatory
-  - Validates all relevant fields
+An interactive web portal to automate and manage library operations like book records, member records, issuing/returning books, and fine tracking.
 
 ---
 
-### 2. Reports Module *(Admin & User)*
+## 📖 Abstract
 
-- Search for available books
-- **Validation**: At least one input (textbox or dropdown) is required
-- **Errors**: Displayed on the same page
-- **Results**: Table view with radio button selection
+The traditional manual system for maintaining student records, book data, and managing accounts is inefficient and error-prone. Students face challenges like:
 
----
+- Difficulty finding specific books  
+- Uncertainty about book availability  
+- No tracking of return schedules  
+- No ISBN-based search
 
-### 3. Transactions Module *(Admin & User)*
-
-#### 📘 Book Issue
-- **Book Name**: Required  
-- **Author Name**: Auto-filled, non-editable  
-- **Issue Date**: Cannot be earlier than today  
-- **Return Date**: Auto = 15 days ahead (can be set earlier)  
-- **Remarks**: Optional  
-
-#### 📗 Return Book
-- **Book Name**: Required  
-- **Author & Issue Date**: Auto-filled  
-- **Serial Number**: Required  
-- **Return Date**: Editable  
-- Submit navigates to **Fine Pay Page**
-
-#### 💵 Fine Pay
-- All fields auto-filled except:
-  - **Fine Paid** (Checkbox)
-  - **Remarks**
-- **Validation**: Fine checkbox must be ticked if fine is due
+This **Library Management System** eliminates these problems by automating all core functions of a library.
 
 ---
 
+## 📌 Core Features
+
+- 🔍 Search books (by title, author, or ISBN)
+- 📕 Issue and return books
+- 💰 Check and track fines
+- 🧾 View member details
+- 📘 Track books issued by a student
+- ➕➖ Add/remove user members
+- 📚 Add/delete books
+- ✏️ Update book availability
+
+---
+
+## 🧩 Additional Features - Admin Dashboard
+
+- View all member records  
+- View all book records  
+- Add, update, and delete book records  
+- Add, update, and delete member/student records  
+
+---
+
+## 🗂️ Modules
+
+- Admin Login  
+- Book Search  
+- Add / Update / Delete Books  
+- Add / Remove / Update Members  
+- Book Issue and Return  
+
+---
+
+## 💻 Technology Stack
+
+**Frontend:**  
+- HTML  
+- CSS  
+- JavaScript  
+
+**Backend:**  
+- python 
+
+**Database:**  
+- SQL  
+
+---
+
+---
 ## 🔐 Authentication
 
 - Separate login pages for Admin and User  
