@@ -73,23 +73,46 @@ A fully functional Library Management System with distinct access for **Admin** 
 | Transactions | ✅ Yes       | ✅ Yes      |
 
 ---
-
-## ✅ Global Features
-
-- Basic UI formatting acceptable  
-- Radio buttons for single-choice fields  
-- Checkboxes for Yes/No inputs  
-- Persistent “Chart” link on all pages (for navigation only, non-functional)
+# 👥 Admin vs User Functionality
 
 ---
 
-## 📌 Assumptions
+## 🔐 Access Control Matrix
 
-- **Author Name**: Auto-filled, based on selected book  
-- **Serial Number**: Unique for each book copy  
-- **Return Date (in Return form)**: Editable to any date  
-- **Fine Calculation**: Logic handled externally (outside this scope)
+| Functionality             | Admin Access | User Access |
+|---------------------------|--------------|-------------|
+| Login                     | ✅ Yes       | ✅ Yes      |
+| Add/Update Book           | ✅ Yes       | ❌ No       |
+| Add/Update Membership     | ✅ Yes       | ❌ No       |
+| User Management           | ✅ Yes       | ❌ No       |
+| Search Books (Reports)    | ✅ Yes       | ✅ Yes      |
+| Book Issue                | ✅ Yes       | ✅ Yes      |
+| Book Return               | ✅ Yes       | ✅ Yes      |
+| Fine Payment              | ✅ Yes       | ✅ Yes      |
+| View Charts (Prototype)   | ✅ Yes       | ✅ Yes      |
 
 ---
 
-> ⚠️ All form inputs are validated. Errors are shown immediately on the same page if fields are missing or incorrect.
+## 🛠️ Admin Functionalities
+
+- Manage Books (Add / Update)
+- Manage Memberships (Add / Update)
+- Manage Users (New / Existing)
+- Search & View Reports
+- Issue Books
+- Return Books
+- Pay Fines
+- Full access to all modules
+
+---
+
+## 🙋‍♂️ User Functionalities
+
+- Login and authenticate
+- Search for available books
+- Issue Books
+- Return Books
+- Pay Fines
+- View charts (non-functional link)
+
+
