@@ -113,6 +113,6 @@ A fully functional Library Management System with distinct access for **Admin** 
 - Issue Books
 - Return Books
 - Pay Fines
-- View charts (non-functional link)
+
 
 
