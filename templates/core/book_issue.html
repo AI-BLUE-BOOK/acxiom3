@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Issue Book</h3>
+            </div>
+            <div class="card-body">
+                {% if messages %}
+                <div class="alert alert-danger">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <form method="post" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    <div class="form-group mb-3">
+                        <label for="id_book">Book:</label>
+                        <select name="book" class="form-control" id="id_book" required>
+                            <option value="">Select a book</option>
+                            {% for book in available_books %}
+                                <option value="{{ book.id }}" data-author="{{ book.author }}">{{ book.title }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="invalid-feedback">Please select a book.</div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="id_author">Author:</label>
+                        <input type="text" id="id_author" class="form-control" readonly>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="id_issue_date">Issue Date:</label>
+                        <input type="datetime-local" name="issue_date" class="form-control" id="id_issue_date" 
+                               min="{{ min_date|date:'Y-m-d\TH:i' }}" value="{{ form.issue_date.value|date:'Y-m-d\TH:i'|default:'' }}" required>
+                        <div class="invalid-feedback">Please select an issue date.</div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="id_return_date">Return Date:</label>
+                        <input type="datetime-local" name="return_date" class="form-control" id="id_return_date" 
+                               value="{{ form.return_date.value|date:'Y-m-d\TH:i'|default:'' }}" required>
+                        <div class="invalid-feedback">Please select a return date.</div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="id_remarks">Remarks:</label>
+                        <textarea name="remarks" class="form-control" id="id_remarks" rows="3">{{ form.remarks.value|default:'' }}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Issue Book</button>
+                    <a href="{% url 'dashboard' %}" class="btn btn-secondary">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.needs-validation');
+    const bookSelect = document.getElementById('id_book');
+    const authorInput = document.getElementById('id_author');
+    const issueDateInput = document.getElementById('id_issue_date');
+    const returnDateInput = document.getElementById('id_return_date');
+
+    // Auto-populate author when book is selected
+    bookSelect.addEventListener('change', function() {
+        const selectedOption = this.options[this.selectedIndex];
+        authorInput.value = selectedOption.dataset.author || '';
+    });
+
+    // Set return date when issue date changes
+    issueDateInput.addEventListener('change', function() {
+        if (this.value) {
+            const issueDate = new Date(this.value);
+            const returnDate = new Date(issueDate);
+            returnDate.setDate(returnDate.getDate() + 15);
+            returnDateInput.value = returnDate.toISOString().slice(0, 16);
+            returnDateInput.min = this.value;
+            returnDateInput.max = returnDate.toISOString().slice(0, 16);
+        }
+    });
+
+    // Form validation
+    form.addEventListener('submit', function(event) {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+    });
+});
+</script>
+{% endblock %}

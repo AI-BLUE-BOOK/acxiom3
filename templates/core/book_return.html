@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Return Book</h3>
+            </div>
+            <div class="card-body">
+                {% if messages %}
+                <div class="alert alert-danger">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <form method="post" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    <div class="form-group mb-3">
+                        <label>Book:</label>
+                        <input type="text" class="form-control" value="{{ transaction.book.title }}" readonly>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Author:</label>
+                        <input type="text" class="form-control" value="{{ transaction.book.author }}" readonly>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Serial Number:</label>
+                        <input type="text" class="form-control" value="{{ transaction.book.serial_number }}" readonly>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Issue Date:</label>
+                        <input type="text" class="form-control" value="{{ transaction.issue_date|date:'Y-m-d H:i' }}" readonly>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="id_actual_return_date">Return Date:</label>
+                        <input type="datetime-local" name="actual_return_date" class="form-control" id="id_actual_return_date" 
+                               value="{{ form.actual_return_date.value|date:'Y-m-d\TH:i'|default:now|date:'Y-m-d\TH:i' }}" required>
+                        <div class="invalid-feedback">Please select a return date.</div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="id_remarks">Remarks:</label>
+                        <textarea name="remarks" class="form-control" id="id_remarks" rows="3">{{ form.remarks.value|default:'' }}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Return Book</button>
+                    <a href="{% url 'dashboard' %}" class="btn btn-secondary">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.needs-validation');
+    form.addEventListener('submit', function(event) {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+    });
+});
+</script>
+{% endblock %}
