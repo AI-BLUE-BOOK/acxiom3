@@ -3,7 +3,8 @@
 An interactive web portal to automate and manage library operations like book records, member records, issuing/returning books, and fine tracking.
 
 ---
-
+![image alt](https://github.com/AI-BLUE-BOOK/acxiom3/blob/main/1.png?raw=true)
+---
 ## 📖 Abstract
 
 The traditional manual system for maintaining student records, book data, and managing accounts is inefficient and error-prone. Students face challenges like:
@@ -16,7 +17,8 @@ The traditional manual system for maintaining student records, book data, and ma
 This **Library Management System** eliminates these problems by automating all core functions of a library.
 
 ---
-
+![image alt](https://github.com/AI-BLUE-BOOK/acxiom3/blob/main/3.png?raw=true)
+---
 ## 📌 Core Features
 
 - 🔍 Search books (by title, author, or ISBN)
@@ -29,7 +31,8 @@ This **Library Management System** eliminates these problems by automating all c
 - ✏️ Update book availability
 
 ---
-
+![image alt](https://github.com/AI-BLUE-BOOK/acxiom3/blob/main/4.png?raw=true)
+---
 ## 🧩 Additional Features - Admin Dashboard
 
 - View all member records  
