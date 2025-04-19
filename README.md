@@ -103,7 +103,8 @@ This **Library Management System** eliminates these problems by automating all c
 | View Charts (Prototype)   | ✅ Yes       | ✅ Yes      |
 
 ---
-
+![image alt](https://github.com/AI-BLUE-BOOK/acxiom3/blob/main/5.png?raw=true)
+---
 ## 🛠️ Admin Functionalities
 
 - Manage Books (Add / Update)
